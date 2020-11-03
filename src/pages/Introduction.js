@@ -57,13 +57,21 @@ const Introduction = (props) => {
   }
 
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: '#eceff1'}}>
-      <View style={{flex: 1}}>
+    <SafeAreaView style={{flex: 1, backgroundColor: '#fed330'}}>
+      <View>
         <View style={introduction.banner}>
-          <Text style={introduction.bannerText}>Select the language</Text>
+          <Text style={introduction.title}>Job Search App</Text>
+          <Text style={introduction.bannerText}>
+            Select the programming language
+          </Text>
+          <Text style={introduction.bannerText}>to see the relevant jobs</Text>
         </View>
 
-        <ScrollView horizontal contentContainerStyle={{alignItems: 'center'}}>
+        <ScrollView
+          horizontal
+          contentContainerStyle={{alignItems: 'center'}}
+          style={introduction.scrollArea}
+          bounces={false}>
           {topics.map((t) => {
             return (
               <TopicItem
