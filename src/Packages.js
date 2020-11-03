@@ -8,7 +8,7 @@ const App = () => {
     <SafeAreaView>
       <ScrollView>
         <Text style={styles.title}>Redux</Text>
-        <Text style={styles.text}>npm install redux react-redux</Text>
+        <Text style={styles.notyet}>npm install redux react-redux</Text>
         <Text style={styles.title}>Axios</Text>
         <Text style={styles.text}>npm install axios</Text>
         <Text style={styles.title}>Navigation</Text>
@@ -31,7 +31,7 @@ const App = () => {
         </Text>
         <Text style={styles.text}>npx pod-install</Text>
         <Text style={styles.title}>Vector Icons</Text>
-        <Text style={styles.text}>
+        <Text style={styles.notyet}>
           npm install --save react-native-vector-icons
         </Text>
         <Text style={styles.notyet}>
@@ -48,6 +48,8 @@ const App = () => {
     </SafeAreaView>
   );
 };
+
+// https://jobs.github.com/api
 
 export default App;
 
