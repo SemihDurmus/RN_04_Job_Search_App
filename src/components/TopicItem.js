@@ -1,12 +1,12 @@
 import React from 'react';
 import {TouchableOpacity, Text} from 'react-native';
 
-import {topicItem} from '../styles';
+import {topicItem} from '../style';
 
 const TopicItem = (props) => {
   return (
     <TouchableOpacity
-      style={[topicItem.container, {backgroundColor: `#${props.item.color}`}]}
+      style={[topicItem.container, {backgroundColor: props.item.color}]}
       onPress={props.onSelect}>
       <Text style={topicItem.text}>{props.item.name}</Text>
     </TouchableOpacity>
@@ -14,3 +14,7 @@ const TopicItem = (props) => {
 };
 
 export {TopicItem};
+
+//     id: 0,
+//     name: 'Java',
+//     color: '#fb5607',

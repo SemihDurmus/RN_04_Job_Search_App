@@ -2,23 +2,23 @@ import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import {SavedJobs, Jobs, Introduction} from './pages';
+import {Introduction, Jobs, SavedJobs} from './pages';
 
 const Stack = createStackNavigator();
 
-function Router() {
+const Router = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
         }}>
-        <Stack.Screen name="Intro" component={Introduction} />
-        <Stack.Screen name="Jobs" component={Jobs} />
-        <Stack.Screen name="SavedJobs" component={SavedJobs} />
+        <Stack.Screen name="IntroPage" component={Introduction} />
+        <Stack.Screen name="JobsPage" component={Jobs} />
+        <Stack.Screen name="SavedJobsPage" component={SavedJobs} />
       </Stack.Navigator>
     </NavigationContainer>
   );
-}
+};
 
 export default Router;

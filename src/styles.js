@@ -1,102 +1,179 @@
 import {StyleSheet, Dimensions} from 'react-native';
 
-export const introduction = StyleSheet.create({
-  banner: {
-    height: Dimensions.get('window').height * 0.4,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fed330',
+export const topicItem = StyleSheet.create({
+  container: {
+    padding: 16,
+    width: 150,
+    margin: 20,
+    borderRadius: 10,
+    backgroundColor: 'green',
   },
-  title: {
-    fontSize: 40,
-    fontWeight: '900',
-    marginBottom: 40,
-    color: '#7158e2',
-  },
-  bannerText: {
-    fontSize: 25,
+  text: {
+    color: '#FFF',
+    fontSize: 20,
+    textAlign: 'center',
     fontWeight: 'bold',
   },
+});
 
+export const intro = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: '#00b894',
+  },
+  bannerTop: {
+    flex: 4,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  bannerBottom: {
+    flex: 2,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  title: {
+    fontWeight: 'bold',
+    fontSize: 35,
+    color: '#FFF',
+    textAlign: 'center',
+    marginVertical: 50,
+  },
+  desc: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    textAlign: 'center',
+  },
   scrollArea: {
-    height: Dimensions.get('window').height * 0.2,
+    flex: 1,
     backgroundColor: '#FFF',
   },
 });
 
-export const topicItem = StyleSheet.create({
-  container: {
-    padding: 12,
-    margin: 7,
-    borderRadius: 6,
+export const jobs = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: '#00b894',
   },
-  text: {
+  title: {
     fontWeight: 'bold',
-    color: 'white',
-    fontSize: 24,
+    fontSize: 35,
+    color: '#FFF',
+    textAlign: 'center',
+    marginVertical: 40,
+  },
+  modalContainer: {
+    backgroundColor: '#c8d6e5',
+    margin: 8,
+    padding: 10,
+    paddingTop: 14,
+    borderWidth: 2,
+    borderColor: '#833471',
+    borderRadius: 10,
+  },
+  modalTitle: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    color: '#833471',
+  },
+  modalSubTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  modalScroll: {
+    height: Dimensions.get('screen').height * 0.3,
+    // backgroundColor: '#FFC312',
+    padding: 10,
+    borderWidth: 2,
+    borderColor: '#833471',
+    borderRadius: 8,
+    marginVertical: 12,
+  },
+  saveButton: {
+    backgroundColor: '#833471',
+    padding: 10,
+    borderRadius: 8,
+    marginVertical: 12,
+  },
+  saveButtonText: {
+    fontWeight: 'bold',
+    fontSize: 18,
+    color: '#FFF',
+    textAlign: 'center',
+  },
+  gotoFavButton: {
+    backgroundColor: '#feca57',
+    borderWidth: 1,
+    borderColor: '#FFF',
+    padding: 10,
+    borderRadius: 8,
+    position: 'absolute',
+    bottom: 10,
+    right: 9,
+    width: 150,
+  },
+  gotoFavButtonText: {
+    fontWeight: 'bold',
+    fontSize: 15,
+    color: '#576574',
+    textAlign: 'center',
   },
 });
 
 export const jobItem = StyleSheet.create({
   container: {
-    padding: 12,
-    margin: 7,
-    borderRadius: 6,
+    margin: 8,
+    padding: 10,
     borderWidth: 1,
-    borderColor: '#bdbdbd',
-    backgroundColor: '#fffa65',
+    borderColor: '#FFF',
+    borderRadius: 10,
+    backgroundColor: '#222f3e',
   },
-  jobname: {
+  text: {
+    fontSize: 16,
     fontWeight: 'bold',
+    color: '#feca57',
+  },
+  desc: {
+    fontSize: 16,
+    fontWeight: '500',
+    color: '#c8d6e5',
+  },
+  trash: {
+    position: 'absolute',
+    top: 26,
+    right: 20,
   },
 });
 
-export const jobs = StyleSheet.create({
-  title: {
-    textAlign: 'center',
-    fontWeight: 'bold',
-    fontSize: 30,
+export const saved_jobs = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: '#c8d6e5',
   },
-  modalBackground: {
-    backgroundColor: 'white',
-    borderRadius: 10,
-    padding: 10,
-  },
-  modalHeader: {
-    marginBottom: 10,
-  },
-  jobTitle: {
-    fontSize: 30,
-    fontWeight: 'bold',
-  },
-  jobSubTitle1: {
-    fontWeight: 'bold',
-    color: 'brown',
-    fontSize: 18,
-  },
-  jobSubTitle2: {
-    fontWeight: 'bold',
-    color: 'darkgreen',
-    fontSize: 18,
-  },
+  container: {flex: 1},
 
-  jobDesc: {
-    padding: 10,
-    height: Dimensions.get('window').height * 0.25,
-    backgroundColor: '#fffa65',
+  title: {
+    fontWeight: 'bold',
+    fontSize: 35,
+    color: '#6F1E51',
+    textAlign: 'center',
+    marginVertical: 40,
   },
-  showFavBackground: {
-    backgroundColor: 'tomato',
-    padding: 10,
-    borderRadius: 10,
+  BackButton: {
+    backgroundColor: '#feca57',
     borderWidth: 1,
+    borderColor: '#FFF',
+    padding: 10,
+    borderRadius: 8,
     position: 'absolute',
     bottom: 10,
-    right: 10,
+    right: 9,
+    width: 150,
   },
-  showFavText: {
-    fontSize: 18,
-    color: '#FFF',
+  BackButtonText: {
     fontWeight: 'bold',
+    fontSize: 15,
+    color: '#576574',
+    textAlign: 'center',
   },
 });

@@ -29,6 +29,10 @@ const App = () => {
         <Text style={styles.text}>
           npm install @react-native-async-storage/async-storage
         </Text>
+        <Text style={styles.title}>HTML View</Text>
+        <Text style={styles.text}>
+          npm install react-native-htmlview --save
+        </Text>
         <Text style={styles.text}>npx pod-install</Text>
         <Text style={styles.title}>Vector Icons</Text>
         <Text style={styles.notyet}>
