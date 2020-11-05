@@ -15,52 +15,73 @@ import HTMLView from 'react-native-htmlview';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {jobs} from '../style';
-import {JobItem} from '../components';
+import {JobItem, SearchBar} from '../components';
 
 const Jobs = (props) => {
   const selectedProgLang = props.route.params.selectedLanguage;
   const [data, setData] = useState([]);
+  const [displayData, setDisplayData] = useState([]);
+  const [selectedJob, setSelectedJob] = useState('');
   const [modalFlag, setModalFlag] = useState(false);
-  const [selectedJob, setSelectedJob] = useState([]);
-  const [isLoading, setLoading] = useState(true);
+  const [forModalJobList, setForModalJobList] = useState([]);
+  const [text, setText] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
 
-  const fetchdata = async () => {
+  const fetchData = async () => {
     const response = await Axios.get(
       `https://jobs.github.com/positions.json?search=${selectedProgLang.toLowerCase()}`,
     );
+
+    setIsLoading(false);
     setData(response.data);
-    setLoading(false);
+    setDisplayData(response.data);
   };
 
-  const onJobSelect = (x) => {
-    setModalFlag(true);
-    setSelectedJob(x);
-  };
+  const filterJobs = () => {
+    const filteredJobList = data.filter((item) => {
+      const searchValue = text.toUpperCase();
+      const jobTitle = item.title.toUpperCase();
 
-  const renderJobs = ({item}) => {
-    return (
-      <JobItem job={item} trash={false} onSelect={() => onJobSelect(item)} />
-    );
+      return jobTitle.indexOf(searchValue) > -1;
+    });
+    setDisplayData(filteredJobList);
   };
 
   useEffect(() => {
-    fetchdata();
+    fetchData();
   }, []);
+
+  useEffect(() => {
+    filterJobs();
+  }, [text]);
+
+  function onJobSelect(job) {
+    setModalFlag(true);
+    setSelectedJob(job);
+  }
+
+  const renderJobs = ({item}) => (
+    <JobItem job={item} onSelect={() => onJobSelect(item)} trash={false} />
+  );
 
   const onJobSave = async () => {
     let savedJobList = await AsyncStorage.getItem('@SAVED_JOBS');
-
     savedJobList = savedJobList == null ? [] : JSON.parse(savedJobList);
 
-    const updatedJobList = [...savedJobList, selectedJob];
+    savedJobList.findIndex((a) => a.id == selectedJob.id) !== -1
+      ? null
+      : (savedJobList = [...savedJobList, selectedJob]);
+    setForModalJobList(savedJobList);
 
-    AsyncStorage.setItem('@SAVED_JOBS', JSON.stringify(updatedJobList));
+    AsyncStorage.setItem('@SAVED_JOBS', JSON.stringify(savedJobList));
   };
+
   // ------------------BODY---------------------
   return (
     <SafeAreaView style={jobs.safeArea}>
       <View style={{flex: 1}}>
         <Text style={jobs.title}>Jobs for {selectedProgLang}</Text>
+        <SearchBar place="Search a job..." changeText={(x) => setText(x)} />
         {isLoading ? (
           <ActivityIndicator
             size="large"
@@ -71,7 +92,7 @@ const Jobs = (props) => {
 
         <FlatList
           keyExtractor={(_, index) => index}
-          data={data}
+          data={displayData}
           renderItem={renderJobs}
         />
         <TouchableOpacity
@@ -90,9 +111,18 @@ const Jobs = (props) => {
             <ScrollView style={jobs.modalScroll}>
               <HTMLView value={selectedJob.description} />
             </ScrollView>
-            <TouchableOpacity style={jobs.saveButton} onPress={onJobSave}>
-              <Text style={jobs.saveButtonText}>Add to Favourites</Text>
-            </TouchableOpacity>
+
+            {forModalJobList.findIndex((a) => a.id == selectedJob.id) !== -1 ? (
+              <TouchableOpacity
+                style={jobs.saveButton}
+                onPress={() => setModalFlag(false)}>
+                <Text style={jobs.saveButtonText}>Close</Text>
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity style={jobs.saveButton} onPress={onJobSave}>
+                <Text style={jobs.saveButtonText}>Add to Favourites</Text>
+              </TouchableOpacity>
+            )}
           </View>
         </Modal>
         {/* ---------------MODAL------------- */}

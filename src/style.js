@@ -177,3 +177,19 @@ export const saved_jobs = StyleSheet.create({
     textAlign: 'center',
   },
 });
+
+export const searchBar = StyleSheet.create({
+  container: {
+    borderRadius: 10,
+    height: 40,
+    justifyContent: 'center',
+    backgroundColor: '#eceff1',
+    marginHorizontal: 10,
+    paddingLeft: 12,
+  },
+  text: {
+    color: '#576574',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+});
