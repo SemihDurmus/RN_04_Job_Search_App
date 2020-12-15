@@ -7,6 +7,7 @@ import {
   FlatList,
   TouchableOpacity,
 } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import {JobItem} from '../components';
 import {saved_jobs} from '../style';
@@ -26,8 +27,6 @@ const SavedJobs = (props) => {
     newJobList = newJobList.filter((d) => {
       return d.id !== x.id;
     });
-    // let index = newJobList.findIndex((a) => a.id == x.id);
-    // newJobList.splice(index, 1);
 
     setJobList(newJobList);
     AsyncStorage.setItem('@SAVED_JOBS', JSON.stringify(newJobList));
@@ -54,7 +53,9 @@ const SavedJobs = (props) => {
         <TouchableOpacity
           style={saved_jobs.BackButton}
           onPress={() => props.navigation.goBack()}>
-          <Text style={saved_jobs.BackButtonText}>Back</Text>
+          <Text style={saved_jobs.BackButtonText}>
+            <Icon name={'chevron-left'} size={20} />
+          </Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

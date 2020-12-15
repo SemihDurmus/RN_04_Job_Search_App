@@ -40,7 +40,7 @@ export const intro = StyleSheet.create({
   },
   desc: {
     fontWeight: 'bold',
-    fontSize: 20,
+    fontSize: 19,
     textAlign: 'center',
   },
   scrollArea: {
@@ -100,18 +100,24 @@ export const jobs = StyleSheet.create({
     color: '#FFF',
     textAlign: 'center',
   },
-  gotoFavButton: {
+  buttonContainer: {
+    position: 'absolute',
+    alignSelf: 'center',
+    width: '90%',
+    bottom: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  navButton: {
     backgroundColor: '#feca57',
     borderWidth: 1,
     borderColor: '#FFF',
     padding: 10,
     borderRadius: 8,
-    position: 'absolute',
-    bottom: 10,
-    right: 9,
     width: 150,
   },
-  gotoFavButtonText: {
+  buttonText: {
     fontWeight: 'bold',
     fontSize: 15,
     color: '#576574',
@@ -167,7 +173,7 @@ export const saved_jobs = StyleSheet.create({
     borderRadius: 8,
     position: 'absolute',
     bottom: 10,
-    right: 9,
+    left: 9,
     width: 150,
   },
   BackButtonText: {
@@ -186,6 +192,7 @@ export const searchBar = StyleSheet.create({
     backgroundColor: '#eceff1',
     marginHorizontal: 10,
     paddingLeft: 12,
+    marginBottom: 12,
   },
   text: {
     color: '#576574',

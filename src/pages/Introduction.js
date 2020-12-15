@@ -64,8 +64,19 @@ const Introduction = (props) => {
       <View style={intro.bannerTop}>
         <Icon name={'superpowers'} size={90} color={'#FFF'} />
         <Text style={intro.title}>Job Search App</Text>
-        <Text style={intro.desc}>Select the programming language</Text>
-        <Text style={intro.desc}>to search jobs</Text>
+        <Text style={intro.desc}>
+          select the language
+          <Text style={[intro.desc, {fontSize: 22, color: '#FFF'}]}>
+            &nbsp;&&&nbsp;
+          </Text>
+          start searching jobs
+        </Text>
+        {/* <Text style={[intro.desc, {fontSize: 22, color: '#FFF'}]}>&&</Text>
+        <Text style={intro.desc}>start searching jobs</Text> */}
+        <Text style={[intro.desc, {marginTop: 30, fontSize: 40}]}>
+          <Icon name={'chevron-left'} size={40} /> &nbsp;&nbsp;
+          <Icon name={'chevron-right'} size={40} />
+        </Text>
       </View>
       <ScrollView
         horizontal

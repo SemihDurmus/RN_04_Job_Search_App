@@ -11,8 +11,8 @@ import {
 import Axios from 'axios';
 import Modal from 'react-native-modal';
 import HTMLView from 'react-native-htmlview';
-
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import {jobs} from '../style';
 import {JobItem, SearchBar} from '../components';
@@ -66,11 +66,15 @@ const Jobs = (props) => {
 
   const onJobSave = async () => {
     let savedJobList = await AsyncStorage.getItem('@SAVED_JOBS');
+
+    console.log(JSON.parse(savedJobList));
+
     savedJobList = savedJobList == null ? [] : JSON.parse(savedJobList);
 
     savedJobList.findIndex((a) => a.id == selectedJob.id) !== -1
-      ? null
+      ? alert('Xixi')
       : (savedJobList = [...savedJobList, selectedJob]);
+
     setForModalJobList(savedJobList);
 
     AsyncStorage.setItem('@SAVED_JOBS', JSON.stringify(savedJobList));
@@ -91,15 +95,28 @@ const Jobs = (props) => {
         ) : null}
 
         <FlatList
-          keyExtractor={(_, index) => index}
+          keyExtractor={(_, index) => index.toString()}
           data={displayData}
           renderItem={renderJobs}
         />
-        <TouchableOpacity
-          style={jobs.gotoFavButton}
-          onPress={() => props.navigation.navigate('SavedJobsPage')}>
-          <Text style={jobs.gotoFavButtonText}>Go to Favourites</Text>
-        </TouchableOpacity>
+        <View style={jobs.buttonContainer}>
+          <>
+            <TouchableOpacity
+              style={jobs.navButton}
+              onPress={() => props.navigation.goBack()}>
+              <Text style={jobs.buttonText}>
+                <Icon name={'chevron-left'} size={20} />
+              </Text>
+            </TouchableOpacity>
+          </>
+          <>
+            <TouchableOpacity
+              style={jobs.navButton}
+              onPress={() => props.navigation.navigate('SavedJobsPage')}>
+              <Text style={jobs.buttonText}>Go to Favourites</Text>
+            </TouchableOpacity>
+          </>
+        </View>
         {/* ---------MODAL----------- */}
         <Modal
           isVisible={modalFlag}
