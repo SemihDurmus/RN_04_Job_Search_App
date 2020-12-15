@@ -67,7 +67,7 @@ const Jobs = (props) => {
   const onJobSave = async () => {
     let savedJobList = await AsyncStorage.getItem('@SAVED_JOBS');
 
-    console.log(JSON.parse(savedJobList));
+    //console.log(JSON.parse(savedJobList));
 
     savedJobList = savedJobList == null ? [] : JSON.parse(savedJobList);
 
