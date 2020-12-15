@@ -37,30 +37,30 @@
 ## Features
 
 - The application comprises use of :
-  * React-native firebase (authentication and realtime database)
+  * Axios 
   * React stack navigation 
   * React-native modal
   * React-native vector-icons
-  * Moment
-  * Error reporting
+  * HTML View
 
-- Login is the landing page of the application. In this page user can enter the registerd email and password to have access to chat-channels. This information is checked with Firebase-authentication. 
-- If the user inserts invalid e-mail and/or password, the app warns user with alerts specified for the type of error.
-- If the user doesnt have a registered account, the user can click "Sign Up" button in Login Page and navigate to Sign Up page. Here the user fills email address and password (twice) to designated input areas. When doing password confirmation the border color of the second password input area turns to green if the password charaters match as the user types, or to red if the characters do not match. So that the user becomes aware of a possible mistake earlier.
-- After click button of Create Account, account will be created in firebase and the user navigates back to Login Page. 
-- Another option is that the user can click on the cancel button which makes the user navigate back to Login Page without creating an account.
-- After logging in successfully, the user must choose a channel among the listed ones in the modal in order to continue. 
-- Once the user selectes any channel, it is possible to display the modal again and change the channel by clicking on the bluish-gray button on top-right.
-- In chat rooms the posted items show up in a chronological order with the sentding times and user names.
-- The user can type a message and send to selected channel.
-- The user can log out by clicking the red logout icon on top-right.
+- Introduction is the landing page of the application. In this page user can select a programming language among the toucheable opacity items in the horizontal flatlist.
+- Once the user selects a programming language, the page is diverted to the Jobs Page. Here the filtered jobs in accordance with the selected language are listed as cards. On top there is a search area where the user can type and search keywords. The user can either use search area or scroll the list to select a job.
+- Once the user selects a job, a model pops up showing the details of the job in HTML view. 
+- The user can add the job item to favourites list by clicking a button on the card.
+- By clicking th 'Go to favorites' button the user is diverted to the Favourite Jobs page. here the user can see the list of jobs added to favourite, and can delete job items by clicking on the trash icon.
 
 ## How To Use
 
 To use this application, the packages for Navigation, Moment, Modal, Vector Icons and Firebase should be installed/identified with prior to running the app. From your command line:
 
 ```
-//-----REACT NAVIGATION---------
+//-----AXIOS-------------------
+
+//https://www.npmjs.com/package/react-native-axios
+
+//$ npm install axios
+
+//-----REACT NAVIGATION--------
 
 //https://reactnavigation.org/docs/getting-started
 
@@ -83,7 +83,7 @@ $yarn add @react-navigation/stack
 $yarn add react-native-modal
 
 
-//-----VECTOR ICONS-------------
+//-----VECTOR ICONS------------
 
 //https://github.com/oblador/react-native-vector-icons
 
@@ -93,18 +93,24 @@ $ npm install --save react-native-vector-icons
 
 //https://oblador.github.io/react-native-vector-icons/
 
+//-----HTML VIEW---------------
+
+//https://github.com/jsdf/react-native-htmlview
+
+$npm install react-native-htmlview --save
 
 ```
 
 ## Acknowledgements
 
 <!-- This section should list any articles or add-ons/plugins that helps you to complete the project. This is optional but it will help you in the future. For exmpale -->
-
+- [Axios](https://www.npmjs.com/package/react-native-axios)
+- [APIs](https://jobs.github.com/positions)
 - [Navigation](https://reactnavigation.org/docs/getting-started)
 - [Modal](https://github.com/react-native-modal/react-native-modal)
 - [Vector Icons - Usage](https://github.com/oblador/react-native-vector-icons)
 - [Vector Icons - List](https://oblador.github.io/react-native-vector-icons/)
-- [Modals](https://github.com/react-native-modal/react-native-modal)
+- [HTML View](https://github.com/jsdf/react-native-htmlview)
 
 
 ## Contact
